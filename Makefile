@@ -6,7 +6,7 @@
 #    By: laime <laime@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/05 10:45:55 by laime             #+#    #+#              #
-#    Updated: 2014/12/04 17:30:45 by laime            ###   ########.fr        #
+#    Updated: 2015/01/10 22:39:36 by laime            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,13 +31,13 @@ OPT = -Wall -Werror -Wextra
 all: $(NAME)
 
 $(NAME):
-	@gcc $(OPT) -c $(SRC) $(HEADERS)
-	@ar rcs $(NAME) $(OBJ)
+	gcc $(OPT) -c $(SRC) $(HEADERS)
+	ar rcs $(NAME) $(OBJ)
 
 clean:
-	@/bin/rm -f $(OBJ) $(HEADERS:.h=.h.gch)
+	/bin/rm -f $(OBJ) $(HEADERS:.h=.h.gch)
 
 fclean: clean
-	@/bin/rm -f $(NAME)
+	/bin/rm -f $(NAME)
 
 re: fclean all

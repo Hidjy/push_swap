@@ -1,4 +1,5 @@
 # libft
+![](https://travis-ci.org/Hidjy/libft.svg?branch=master)
 
 In our first project at *42*, the **libft**, we were asked to create our own
 library.
