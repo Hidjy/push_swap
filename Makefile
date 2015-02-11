@@ -6,7 +6,7 @@
 #    By: laime <laime@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/05 10:45:55 by laime             #+#    #+#              #
-#    Updated: 2015/01/10 22:39:36 by laime            ###   ########.fr        #
+#    Updated: 2015/02/11 18:18:48 by laime            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,16 +23,19 @@ SRC = ft_atoi.c ft_bzero.c ft_intlen.c ft_isalnum.c ft_isalpha.c \
 	  ft_strnew.c ft_strnstr.c ft_strrchr.c ft_strsplit.c ft_strstr.c \
 	  ft_strsub.c ft_strtrim.c ft_tolower.c ft_toupper.c ft_lstnew.c \
 	  ft_lstdel.c ft_lstdelone.c ft_lstadd.c ft_lstiter.c ft_lstlen.c \
-	  ft_lstmap.c ft_lstaddlast.c ft_lstreverse.c ft_lstswap.c ft_lstdelnode.c
+	  ft_lstmap.c ft_lstaddlast.c ft_lstreverse.c ft_lstswap.c ft_lstdelnode.c \
+	  ft_kebab.c
 HEADERS = libft.h
 OBJ = $(SRC:.c=.o)
 OPT = -Wall -Werror -Wextra
 
 all: $(NAME)
 
-$(NAME):
-	gcc $(OPT) -c $(SRC) $(HEADERS)
+$(NAME): $(OBJ)
 	ar rcs $(NAME) $(OBJ)
+
+$(OBJ):
+	gcc $(OPT) -c $(SRC) $(HEADERS)
 
 clean:
 	/bin/rm -f $(OBJ) $(HEADERS:.h=.h.gch)
