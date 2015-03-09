@@ -28,3 +28,11 @@ t_dlist		*dlist_new(const void *content, size_t content_size)
 	out->prev = NULL;
 	return (out);
 }
+
+void		dlist_add(t_dlist **list, t_dlist *elem)
+{
+	elem->next = *list;
+	if (*list != NULL)
+		(*list)->prev = elem;
+	*list = elem;
+}
