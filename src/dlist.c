@@ -31,8 +31,26 @@ t_dlist		*dlist_new(const void *content, size_t content_size)
 
 void		dlist_add(t_dlist **list, t_dlist *elem)
 {
+	elem->prev = NULL;
 	elem->next = *list;
 	if (*list != NULL)
 		(*list)->prev = elem;
 	*list = elem;
+}
+
+void		dlist_pushback(t_dlist **list, t_dlist *elem)
+{
+	t_dlist		*tmp;
+
+	tmp = *list;
+	while (tmp != NULL && tmp->next != NULL)
+	{
+		tmp = tmp->next;
+	}
+	elem->prev = tmp;
+	if (tmp != NULL)
+		(tmp)->next = elem;
+	else
+		*list = elem;
+	elem->next = NULL;
 }
