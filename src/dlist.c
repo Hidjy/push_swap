@@ -54,3 +54,34 @@ void		dlist_pushback(t_dlist **list, t_dlist *elem)
 		*list = elem;
 	elem->next = NULL;
 }
+
+void		dlist_cuthead(t_dlist **list, void (*del)(t_dlist *))
+{
+	t_dlist		*tmp;
+
+	tmp = *list;
+	if (tmp != NULL)
+	{
+		*list = (*list)->next;
+		del(tmp);
+	}
+}
+
+void		dlist_cuttail(t_dlist **list, void (*del)(t_dlist *))
+{
+	t_dlist		*tmp;
+
+	tmp = *list;
+	while (tmp != NULL && tmp->next != NULL)
+	{
+		tmp = tmp->next;
+	}
+	if (tmp != NULL)
+	{
+		if (tmp->prev != NULL)
+			tmp->prev->next = NULL;
+		else
+			*list = NULL;
+		del(tmp);
+	}
+}
