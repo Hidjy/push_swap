@@ -65,7 +65,10 @@ int		main(int argc, char **argv)
 	a = parse_args(argv);
 	b = NULL;
 	push(&a, &b);
-	push(&b, &a);
+	push(&a, &b);
+	push(&a, &b);
+	r(&a);
+	r(&b);
 	dlist_print(a);
 	dlist_print(b);
 	return (0);

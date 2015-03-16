@@ -25,3 +25,14 @@ void	push(t_dlist **src, t_dlist **dst)
 	dlist_add(dst, new);
 	dlist_cuthead(src);
 }
+
+void	r(t_dlist **list)
+{
+	t_dlist	*new;
+
+	if (list == NULL)
+		return ;
+	new = dlist_new((*list)->data, (*list)->size);
+	dlist_pushback(list, new);
+	dlist_cuthead(list);
+}

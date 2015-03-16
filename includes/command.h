@@ -16,5 +16,6 @@
 # include "dlist.h"
 
 void	push(t_dlist **src, t_dlist **dst);
+void	r(t_dlist **list);
 
 #endif
