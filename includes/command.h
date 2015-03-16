@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dlist.h                                            :+:      :+:    :+:   */
+/*   command.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: laime <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,23 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DLIST_H
-# define DLIST_H
+#ifndef COMMAND_H
+# define COMMAND_H
 
-# include <string.h>
+# include "dlist.h"
 
-typedef struct		s_dlist
-{
-	void			*data;
-	size_t			size;
-	struct s_dlist	*next;
-	struct s_dlist	*prev;
-}					t_dlist;
-
-t_dlist		*dlist_new(const void *content, size_t content_size);
-void		dlist_add(t_dlist **list, t_dlist *elem);
-void		dlist_pushback(t_dlist **list, t_dlist *elem);
-void		dlist_cuthead(t_dlist **list);
-void		dlist_cuttail(t_dlist **list);
+void	pushb(t_dlist **a, t_dlist **b);
 
 #endif

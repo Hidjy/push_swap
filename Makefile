@@ -14,7 +14,8 @@ STATIC_EXE	= push_swap
 DEBUG_EXE	= push_swap_debug
 
 SRC		=	main.c			\
-			dlist.c
+			dlist.c			\
+			command.c
 
 HEAD_DIR	= includes
 SRC_DIR		= src

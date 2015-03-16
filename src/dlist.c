@@ -55,7 +55,7 @@ void		dlist_pushback(t_dlist **list, t_dlist *elem)
 	elem->next = NULL;
 }
 
-void		dlist_cuthead(t_dlist **list, void (*del)(t_dlist *))
+void		dlist_cuthead(t_dlist **list)
 {
 	t_dlist		*tmp;
 
@@ -63,11 +63,16 @@ void		dlist_cuthead(t_dlist **list, void (*del)(t_dlist *))
 	if (tmp != NULL)
 	{
 		*list = (*list)->next;
-		del(tmp);
+		if (tmp != NULL)
+		{
+			if (tmp->data != NULL)
+				free(tmp->data);
+			free(tmp);
+		}
 	}
 }
 
-void		dlist_cuttail(t_dlist **list, void (*del)(t_dlist *))
+void		dlist_cuttail(t_dlist **list)
 {
 	t_dlist		*tmp;
 
@@ -82,6 +87,11 @@ void		dlist_cuttail(t_dlist **list, void (*del)(t_dlist *))
 			tmp->prev->next = NULL;
 		else
 			*list = NULL;
-		del(tmp);
+		if (tmp != NULL)
+		{
+			if (tmp->data != NULL)
+				free(tmp->data);
+			free(tmp);
+		}
 	}
 }
