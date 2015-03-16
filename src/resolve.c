@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   resolve.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: laime <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,63 +13,64 @@
 #include "dlist.h"
 #include "command.h"
 #include "libft.h"
-#include "resolve.h"
-#include <stdlib.h>
 
-void	dlist_print(t_dlist *tmp)
+int		check(t_dlist *a)
+{
+	int		*nb;
+	int		*last;
+
+	if (a == NULL)
+		return (1);
+	last = (int *)a->data;
+	while (a)
+	{
+		nb = (int *)a->data;
+		if (*last > *nb)
+			return (0);
+		last = nb;
+		a = a->next;
+	}
+	return (1);
+}
+
+int		get_lower(t_dlist *a)
+{
+	int		*nb;
+	int		*last;
+
+	if (a == NULL)
+		return (0);
+	last = (int *)a->data;
+	while (a)
+	{
+		nb = (int *)a->data;
+		if (*last > *nb)
+			last = nb;
+		a = a->next;
+	}
+	return (*last);
+}
+
+void	resolve(t_dlist **a, t_dlist **b)
 {
 	int		*nb;
 
-	while (tmp != NULL)
+	while (*b != NULL || check(*a) == 0)
 	{
-		nb = (int *)tmp->data;
-		ft_putnbr(*nb);
-		if (tmp->next != NULL)
-			ft_putchar(' ');
-		tmp = tmp->next;
+		if (*a == NULL)
+		{
+			while (*b != NULL)
+				push(b, a);
+		}
+		else
+		{
+			nb = (int *)(*a)->data;
+			while (*nb != get_lower(*a))
+			{
+				r(a);
+				nb = (int *)(*a)->data;
+			}
+			push(a, b);
+		}
 	}
-	ft_putchar('\n');
-
-}
-
-t_dlist	*parse_args(char **argv)
-{
-	t_dlist		*out;
-	t_dlist		*elem;
-	char		**cmds;
-	int			i;
-	int			nb;
-
-	out = NULL;
-	cmds = ft_strsplit(argv[1], ' ');
-	i = 0;
-	while (cmds[i] != NULL)
-		i++;
-	i--;
-	while (i >= 0)
-	{
-		nb = ft_atoi(cmds[i]);
-		elem = dlist_new(&nb, sizeof(int));
-		dlist_add(&out, elem);
-		i--;
-	}
-	return (out);
-}
-
-int		main(int argc, char **argv)
-{
-	t_dlist		*a;
-	t_dlist		*b;
-
-	if (argc != 2)
-		return (0);
-	a = parse_args(argv);
-	b = NULL;
-	dlist_print(a);
-	dlist_print(b);
-	ft_putchar('\n');
-	resolve(&a, &b);
-	dlist_print(a);
-	dlist_print(b);
-	return (0);
 }
