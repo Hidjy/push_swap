@@ -13,6 +13,19 @@
 #include "dlist.h"
 #include "libft.h"
 
+void	pusha(t_dlist **a, t_dlist **b)
+{
+	t_dlist	*tmp;
+	t_dlist	*new;
+
+	if (a == NULL)
+		return ;
+	tmp = *b;
+	new = dlist_new(tmp->data, tmp->size);
+	dlist_add(a, new);
+	dlist_cuthead(b);
+}
+
 void	pushb(t_dlist **a, t_dlist **b)
 {
 	t_dlist	*tmp;

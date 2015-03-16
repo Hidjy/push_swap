@@ -15,6 +15,7 @@
 
 # include "dlist.h"
 
+void	pusha(t_dlist **a, t_dlist **b);
 void	pushb(t_dlist **a, t_dlist **b);
 
 #endif
