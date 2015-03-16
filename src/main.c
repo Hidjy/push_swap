@@ -64,8 +64,8 @@ int		main(int argc, char **argv)
 		return (0);
 	a = parse_args(argv);
 	b = NULL;
-	pushb(&a, &b);
-	pusha(&a, &b);
+	push(&a, &b);
+	push(&b, &a);
 	dlist_print(a);
 	dlist_print(b);
 	return (0);

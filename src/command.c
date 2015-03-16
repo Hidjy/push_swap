@@ -13,28 +13,15 @@
 #include "dlist.h"
 #include "libft.h"
 
-void	pusha(t_dlist **a, t_dlist **b)
+void	push(t_dlist **src, t_dlist **dst)
 {
 	t_dlist	*tmp;
 	t_dlist	*new;
 
-	if (a == NULL)
+	if (src == NULL)
 		return ;
-	tmp = *b;
+	tmp = *src;
 	new = dlist_new(tmp->data, tmp->size);
-	dlist_add(a, new);
-	dlist_cuthead(b);
-}
-
-void	pushb(t_dlist **a, t_dlist **b)
-{
-	t_dlist	*tmp;
-	t_dlist	*new;
-
-	if (b == NULL)
-		return ;
-	tmp = *a;
-	new = dlist_new(tmp->data, tmp->size);
-	dlist_add(b, new);
-	dlist_cuthead(a);
+	dlist_add(dst, new);
+	dlist_cuthead(src);
 }
