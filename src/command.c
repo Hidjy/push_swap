@@ -36,3 +36,14 @@ void	r(t_dlist **list)
 	dlist_pushback(list, new);
 	dlist_cuthead(list);
 }
+
+void	rr(t_dlist **list)
+{
+	t_dlist	*new;
+
+	if (list == NULL)
+		return ;
+	new = dlist_new((*list)->data, (*list)->size);
+	dlist_add(list, new);
+	dlist_cuttail(list);
+}

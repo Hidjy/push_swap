@@ -60,17 +60,28 @@ void	resolve(t_dlist **a, t_dlist **b)
 		if (*a == NULL)
 		{
 			while (*b != NULL)
+			{
 				push(b, a);
+				ft_putstr("pa ");
+			}
 		}
 		else
 		{
 			nb = (int *)(*a)->data;
-			while (*nb != get_lower(*a))
-			{
-				r(a);
+			if (*nb == get_lower(*a))
 				nb = (int *)(*a)->data;
+			else
+			{
+				while (*nb != get_lower(*a))
+				{
+					r(a);
+					ft_putstr("ra ");
+					nb = (int *)(*a)->data;
+				}
+				push(a, b);
+				ft_putstr("pb ");
 			}
-			push(a, b);
 		}
 	}
+	ft_putchar('\n');
 }

@@ -67,7 +67,6 @@ int		main(int argc, char **argv)
 	b = NULL;
 	dlist_print(a);
 	dlist_print(b);
-	ft_putchar('\n');
 	resolve(&a, &b);
 	dlist_print(a);
 	dlist_print(b);
