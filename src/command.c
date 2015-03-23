@@ -40,10 +40,14 @@ void	r(t_dlist **list)
 void	rr(t_dlist **list)
 {
 	t_dlist	*new;
+	t_dlist	*tmp;
 
 	if (list == NULL)
 		return ;
-	new = dlist_new((*list)->data, (*list)->size);
+	tmp = (*list);
+	while (tmp->next != NULL)
+		tmp = tmp->next;
+	new = dlist_new(tmp->data, tmp->size);
 	dlist_add(list, new);
 	dlist_cuttail(list);
 }

@@ -51,6 +51,34 @@ int		get_lowest(t_dlist *a)
 	return (*last);
 }
 
+int		is_rr_better(t_dlist *a)
+{
+	t_dlist		*tmp;
+	int			len;
+	int			lowest;
+
+	if (a == NULL)
+		return (0);
+	lowest = get_lowest(a);
+	tmp = a;
+	len = 0;
+	while (tmp)
+	{
+		len++;
+		tmp = tmp->next;
+	}
+	len /= 2;
+	tmp = a;
+	while (len >= 0)
+	{
+		len--;
+		if (*((int *)tmp->data) == lowest)
+			return (0);
+		tmp = tmp->next;
+	}
+	return (1);
+}
+
 void	resolve(t_dlist **a, t_dlist **b)
 {
 	int		*nb;
@@ -75,10 +103,18 @@ void	resolve(t_dlist **a, t_dlist **b)
 			}
 			else if (*nb != get_lowest(*a))
 			{
-				r(a);
-				ft_putstr("ra ");
+				if (is_rr_better(*a))
+				{
+					rr(a);
+					ft_putstr("rra ");
+				}
+				else
+				{
+					r(a);
+					ft_putstr("ra ");
+				}
 			}
-			else if (*nb == get_lowest(*a))
+			else
 			{
 				push(a, b);
 				ft_putstr("pb ");
