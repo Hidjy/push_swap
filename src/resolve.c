@@ -33,7 +33,7 @@ int		check(t_dlist *a)
 	return (1);
 }
 
-int		get_lower(t_dlist *a)
+int		get_lowest(t_dlist *a)
 {
 	int		*nb;
 	int		*last;
@@ -68,16 +68,18 @@ void	resolve(t_dlist **a, t_dlist **b)
 		else
 		{
 			nb = (int *)(*a)->data;
-			if (*nb == get_lower(*a))
-				nb = (int *)(*a)->data;
-			else
+			if ((*a)->next != NULL && *((int *)(*a)->next->data) == get_lowest(*a))
 			{
-				while (*nb != get_lower(*a))
-				{
-					r(a);
-					ft_putstr("ra ");
-					nb = (int *)(*a)->data;
-				}
+				s(a);
+				ft_putstr("sa ");
+			}
+			else if (*nb != get_lowest(*a))
+			{
+				r(a);
+				ft_putstr("ra ");
+			}
+			else if (*nb == get_lowest(*a))
+			{
 				push(a, b);
 				ft_putstr("pb ");
 			}

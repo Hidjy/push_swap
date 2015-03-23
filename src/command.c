@@ -47,3 +47,18 @@ void	rr(t_dlist **list)
 	dlist_add(list, new);
 	dlist_cuttail(list);
 }
+
+void	s(t_dlist **list)
+{
+	void	*tmp;
+	size_t	tmp_s;
+
+	if (list == NULL || *list == NULL || (*list)->next == NULL)
+		return ;
+	tmp = (*list)->data;
+	tmp_s = (*list)->size;
+	(*list)->data = (*list)->next->data;
+	(*list)->size = (*list)->next->size;
+	(*list)->next->data = tmp;
+	(*list)->next->size = tmp_s;
+}

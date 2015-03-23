@@ -17,5 +17,7 @@
 
 void	push(t_dlist **src, t_dlist **dst);
 void	r(t_dlist **list);
+void	rr(t_dlist **list);
+void	s(t_dlist **list);
 
 #endif
