@@ -29,7 +29,6 @@ void	dlist_print(t_dlist *tmp)
 		tmp = tmp->next;
 	}
 	ft_putchar('\n');
-
 }
 
 t_dlist	*parse_args(char **argv)

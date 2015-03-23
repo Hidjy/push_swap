@@ -23,10 +23,10 @@ typedef struct		s_dlist
 	struct s_dlist	*prev;
 }					t_dlist;
 
-t_dlist		*dlist_new(const void *content, size_t content_size);
-void		dlist_add(t_dlist **list, t_dlist *elem);
-void		dlist_pushback(t_dlist **list, t_dlist *elem);
-void		dlist_cuthead(t_dlist **list);
-void		dlist_cuttail(t_dlist **list);
+t_dlist				*dlist_new(const void *content, size_t content_size);
+void				dlist_add(t_dlist **list, t_dlist *elem);
+void				dlist_pushback(t_dlist **list, t_dlist *elem);
+void				dlist_cuthead(t_dlist **list);
+void				dlist_cuttail(t_dlist **list);
 
 #endif
