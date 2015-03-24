@@ -31,23 +31,18 @@ void	dlist_print(t_dlist *tmp)
 	ft_putchar('\n');
 }
 
-t_dlist	*parse_args(char **argv)
+
+t_dlist	*parse_args(int i, char **argv)
 {
 	t_dlist		*out;
 	t_dlist		*elem;
-	char		**cmds;
-	int			i;
 	int			nb;
 
 	out = NULL;
-	cmds = ft_strsplit(argv[1], ' ');
-	i = 0;
-	while (cmds[i] != NULL)
-		i++;
 	i--;
-	while (i >= 0)
+	while (i)
 	{
-		nb = ft_atoi(cmds[i]);
+		nb = ft_atoi(argv[i]);
 		elem = dlist_new(&nb, sizeof(int));
 		dlist_add(&out, elem);
 		i--;
@@ -60,14 +55,8 @@ int		main(int argc, char **argv)
 	t_dlist		*a;
 	t_dlist		*b;
 
-	if (argc != 2)
-		return (0);
-	a = parse_args(argv);
+	a = parse_args(argc, argv);
 	b = NULL;
-	dlist_print(a);
-	dlist_print(b);
 	resolve(&a, &b);
-	dlist_print(a);
-	dlist_print(b);
 	return (0);
 }
