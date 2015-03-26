@@ -79,10 +79,12 @@ int		is_rr_better(t_dlist *a)
 	return (1);
 }
 
-void	resolve(t_dlist **a, t_dlist **b)
+int		resolve(t_dlist **a, t_dlist **b)
 {
 	int		*nb;
+	int		i;
 
+	i = 0;
 	while (*b != NULL || check(*a) == 0)
 	{
 		if (*a == NULL)
@@ -91,6 +93,7 @@ void	resolve(t_dlist **a, t_dlist **b)
 			{
 				push(b, a);
 				ft_putstr("pa ");
+				i++;
 			}
 		}
 		else
@@ -119,7 +122,9 @@ void	resolve(t_dlist **a, t_dlist **b)
 				push(a, b);
 				ft_putstr("pb ");
 			}
+			i++;
 		}
 	}
 	ft_putchar('\n');
+	return (i);
 }

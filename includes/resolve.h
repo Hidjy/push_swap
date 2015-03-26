@@ -15,6 +15,6 @@
 
 # include "dlist.h"
 
-void	resolve(t_dlist **a, t_dlist **b);
+int		resolve(t_dlist **a, t_dlist **b);
 
 #endif

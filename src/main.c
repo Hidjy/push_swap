@@ -57,6 +57,7 @@ int		main(int argc, char **argv)
 
 	a = parse_args(argc, argv);
 	b = NULL;
-	resolve(&a, &b);
+	ft_putnbr(resolve(&a, &b));
+	ft_putchar('\n');
 	return (0);
 }
