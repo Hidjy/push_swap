@@ -79,52 +79,59 @@ int		is_rr_better(t_dlist *a)
 	return (1);
 }
 
+int		is_almost_sorted(t_dlist *list)
+{
+	t_dlist	*tmp;
+	int		len;
+	int		*nb;
+	int		*last;
+
+	len = 0;
+	tmp = list;
+	while (tmp)
+	{
+		len++;
+		tmp = tmp->next;
+	}
+	tmp = list;
+	if (len <= 3)
+		return (0);
+	last = (int *)tmp->data;
+	while (len-- > 1)
+	{
+		nb = (int *)tmp->data;
+		if (*last > *nb)
+			return (0);
+		last = nb;
+		tmp = tmp->next;
+	}
+	return (1);
+}
+
 int		resolve(t_dlist **a, t_dlist **b)
 {
 	int		*nb;
 	int		i;
 
 	i = 0;
-	while (*b != NULL || check(*a) == 0)
+	while ((*a != NULL) && (*b != NULL || check(*a) == 0))
 	{
-		if (*a == NULL)
-		{
-			while (*b != NULL)
-			{
-				push(b, a);
-				ft_putstr("pa ");
-				i++;
-			}
-		}
+		nb = (int *)(*a)->data;
+		if (!(*b) && (*a)->next != NULL && *((int *)(*a)->next->data) < *nb)
+			do_command(SA, 0, a, b);
+		else if (*b == NULL && is_almost_sorted(*a))
+			do_command(AS, 0, a, b),
+			i += 4;
+		else if (*nb == get_lowest(*a))
+			do_command(PB, 0, a, b);
+		else if (is_rr_better(*a))
+			do_command(RRA, 0, a, b);
 		else
-		{
-			nb = (int *)(*a)->data;
-			if ((*a)->next != NULL && *((int *)(*a)->next->data) == get_lowest(*a))
-			{
-				s(a);
-				ft_putstr("sa ");
-			}
-			else if (*nb != get_lowest(*a))
-			{
-				if (is_rr_better(*a))
-				{
-					rr(a);
-					ft_putstr("rra ");
-				}
-				else
-				{
-					r(a);
-					ft_putstr("ra ");
-				}
-			}
-			else
-			{
-				push(a, b);
-				ft_putstr("pb ");
-			}
-			i++;
-		}
+			do_command(RA, 0, a, b);
+		i++;
 	}
+	while (*b != NULL && i++)
+		do_command(PA, 0, a, b);
 	ft_putchar('\n');
 	return (i);
 }

@@ -31,7 +31,6 @@ void	dlist_print(t_dlist *tmp)
 	ft_putchar('\n');
 }
 
-
 t_dlist	*parse_args(int i, char **argv)
 {
 	t_dlist		*out;
