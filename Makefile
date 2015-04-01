@@ -16,7 +16,8 @@ DEBUG_EXE	= push_swap_debug
 SRC		=	main.c			\
 			dlist.c			\
 			command.c		\
-			resolve.c
+			resolve.c		\
+			error.c
 
 HEAD_DIR	= includes
 SRC_DIR		= src

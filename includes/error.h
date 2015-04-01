@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   resolve.h                                          :+:      :+:    :+:   */
+/*   error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: laime <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/03/09 17:52:54 by laime             #+#    #+#             */
-/*   Updated: 2015/03/09 17:52:56 by laime            ###   ########.fr       */
+/*   Created: 2015/04/01 16:32:32 by laime             #+#    #+#             */
+/*   Updated: 2015/04/01 16:32:41 by laime            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RESOLVE_H
-# define RESOLVE_H
+#ifndef ERROR_H
+# define ERROR_H
 
 # include "dlist.h"
 
-# define NB 0
-
-int		resolve(t_dlist **a, t_dlist **b);
+int		error_handling(char **argv);
+int		ft_atoi_err(const char *str, int *err);
+void	quit(char *msg, int fd);
 
 #endif
