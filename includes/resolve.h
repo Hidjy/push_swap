@@ -17,6 +17,6 @@
 
 # define NB 0
 
-int		resolve(t_dlist **a, t_dlist **b);
+int		resolve(t_dlist **a, t_dlist **b, int mode);
 
 #endif

@@ -81,10 +81,10 @@ int		main(int argc, char **argv)
 	b = NULL;
 	if (NB)
 	{
-		ft_putnbr(resolve(&a, &b));
+		ft_putnbr(resolve(&a, &b, opts));
 		ft_putchar('\n');
 	}
 	else
-		resolve(&a, &b);
+		resolve(&a, &b, opts);
 	return (0);
 }

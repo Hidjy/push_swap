@@ -71,15 +71,15 @@ void	s(t_dlist **list)
 void	do_command(int command, int mode, t_dlist **a, t_dlist **b)
 {
 	if (command & RA)
-		r(a), ft_putstr("ra");
+		r(a), ft_putstr("\033[36mra\033[37m");
 	if (command & RRA)
-		rr(a), ft_putstr("rra");
+		rr(a), ft_putstr("\033[32mrra\033[37m");
 	if (command & PA)
-		push(b, a), ft_putstr("pa");
+		push(b, a), ft_putstr("\033[33mpa\033[37m");
 	if (command & PB)
-		push(a, b), ft_putstr("pb");
+		push(a, b), ft_putstr("\033[34mpb\033[37m");
 	if (command & SA)
-		s(a), ft_putstr("sa");
+		s(a), ft_putstr("\033[35msa\033[37m");
 	if (command & AS)
 		do_command(RRA, mode, a, b),
 		do_command(RRA, mode, a, b),
@@ -91,7 +91,6 @@ void	do_command(int command, int mode, t_dlist **a, t_dlist **b)
 		ft_putstr(":\n");
 		dlist_print(*a);
 		dlist_print(*b);
-		ft_putchar('\n');
 	}
 	else
 		ft_putchar(' ');

@@ -108,7 +108,7 @@ int		is_almost_sorted(t_dlist *list)
 	return (1);
 }
 
-int		resolve(t_dlist **a, t_dlist **b)
+int		resolve(t_dlist **a, t_dlist **b, int mode)
 {
 	int		*nb;
 	int		i;
@@ -118,20 +118,21 @@ int		resolve(t_dlist **a, t_dlist **b)
 	{
 		nb = (int *)(*a)->data;
 		if (!(*b) && (*a)->next != NULL && *((int *)(*a)->next->data) < *nb)
-			do_command(SA, 0, a, b);
+			do_command(SA, mode, a, b);
 		else if (*b == NULL && is_almost_sorted(*a))
-			do_command(AS, 0, a, b),
+			do_command(AS, mode, a, b),
 			i += 4;
 		else if (*nb == get_lowest(*a))
-			do_command(PB, 0, a, b);
+			do_command(PB, mode, a, b);
 		else if (is_rr_better(*a))
-			do_command(RRA, 0, a, b);
+			do_command(RRA, mode, a, b);
 		else
-			do_command(RA, 0, a, b);
+			do_command(RA, mode, a, b);
 		i++;
 	}
 	while (*b != NULL && i++)
-		do_command(PA, 0, a, b);
-	ft_putchar('\n');
+		do_command(PA, mode, a, b);
+	if (!(mode & V))
+		ft_putchar('\n');
 	return (i);
 }
